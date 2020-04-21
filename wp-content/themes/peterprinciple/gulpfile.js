@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
 var sourceUrls = require('gulp-source-url');
-var fs = require('fs'); 
+var fs = require('fs');
 var merge = require('merge-stream');
 var path = require('path');
 var componentsPath = 'components/';
@@ -43,7 +43,7 @@ gulp.task('sass:inject', () => {
 
 gulp.task('sass', sass);
 function sass() {
-    return gulp.src(['assets/scss/styles.scss']) 
+    return gulp.src(['assets/scss/styles.scss'])
         .pipe($.sourcemaps.init())
         .pipe($.sass())
         .on('error', $.notify.onError({ message: "<%= error.message %>", title: "Sass Error" }))
@@ -55,7 +55,7 @@ function sass() {
         .pipe($.concat('styles.css'))
         .pipe($.autoprefixer({ browsers: ['last 2 versions', 'ie >= 9'] }))
         .pipe($.minifyCss())
-        .pipe( $.sourcemaps.write('.')) 
+        .pipe( $.sourcemaps.write('.'))
         .pipe(gulp.dest('assets/css'))
         .pipe(browserSync.stream())
 }
@@ -64,7 +64,7 @@ gulp.task('js:globals', ['clean:js'], jsGlobals);
 function jsGlobals() {
     return gulp.src(['assets/js/*.js'])
         .pipe($.sourcemaps.init())
-        .pipe(sourceUrls('.')) 
+        .pipe(sourceUrls('.'))
         .pipe($.uglify())
         .pipe($.rename({ suffix: '.min' }))
         .pipe($.sourcemaps.write('.'))
@@ -77,7 +77,7 @@ function jsComponents() {
     var compilePublicComponents = getFolders(componentsPath).map(function(folder) {
         return gulp.src([path.join(componentsPath, folder, '/**/*.js')])
             .pipe($.sourcemaps.init())
-            .pipe(sourceUrls('.')) 
+            .pipe(sourceUrls('.'))
             .pipe($.concat(folder + '.min.js'))
             .pipe(gulp.dest(componentsPath + folder))
             .pipe($.uglify())
@@ -102,7 +102,7 @@ gulp.task('default', ['sass:inject','sass', 'js:components', 'js:globals'], func
 
     browserSync.init({
         files: ['{components,templates}/**/*.php', '*.php'],
-        proxy: 'blkdg-component.test',
+        proxy: 'localhost:8080',
         snippetOptions: {
           whitelist: ['/wp-admin/admin-ajax.php'],
           blacklist: ['/wp-admin/**']
@@ -113,7 +113,7 @@ gulp.task('default', ['sass:inject','sass', 'js:components', 'js:globals'], func
         logFileChange(v);
         gulp.run('js:globals');
     });
-    
+
     $.watch(['components/**/*.js', '!components/**/*.min.js'], function (v) {
         logFileChange(v);
         gulp.run('js:components');
@@ -128,5 +128,5 @@ gulp.task('default', ['sass:inject','sass', 'js:components', 'js:globals'], func
         logFileChange(v);
         gulp.run('sass');
     });
-    
+
 });

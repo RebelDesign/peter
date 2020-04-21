@@ -7,11 +7,11 @@ get_header();
 
 
  // echo do_shortcode('[contact-form-7 id="8" title="Contact form 1"]');
-
-$boss_complaints = new StdClass;
-//$boss_complaints = get_field('one_complaints');
-$boss_complaints = get_field('boss_complaints');
-Components\View::render('contact', 'home-contact', $boss_complaints);
+// 
+// $boss_complaints = new StdClass;
+// //$boss_complaints = get_field('one_complaints');
+// $boss_complaints = get_field('boss_complaints');
+// Components\View::render('contact', 'home-contact', $boss_complaints);
 
 
 
