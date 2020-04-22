@@ -1,5 +1,5 @@
 {
-    "name": "peterprinciple/components-theme",
+    "name": "peterprinciple/peterprinciple",
     "description": "WordPress theme based upon component-based development practices.",
     "require": {
         "vlucas/phpdotenv": "^2.4"

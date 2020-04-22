@@ -1,6 +1,6 @@
 <main class="container">
 	<div class="row">
-		<div class="col-sm-8">
+		<div class="col-12">
 
 			<?php while ( have_posts() ) : the_post();
 
@@ -11,15 +11,15 @@
 
 			<?php // Link Pages
 			wp_link_pages();
-			
+
 			// Previous/next page navigation.
 			the_posts_pagination(); ?>
 
 		</div>
-		<div class="col-sm-4">
+		<!-- <div class="col-sm-4">
 
-			<?php Components\View::render('widget', 'sidebar-1'); ?>
+			?php Components\View::render('widget', 'sidebar-1'); ?>
 
-		</div>
+		</div> -->
 	</div>
 </main>

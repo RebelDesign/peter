@@ -22,6 +22,8 @@ Setup\Widgets::init();
 Setup\Scripts::init();
 Setup\Menus::init();
 
+
+// Setup\PostTypes\Compliants::register();
 Setup\Widgets\RelatedPosts::register();
 
 function get_the_content_formatted() {
@@ -32,67 +34,37 @@ function get_the_content_formatted() {
 }
 
 
-/*
-* Creating a function to create our CPT
-*/
+if( function_exists('acf_add_options_page') ) {
 
-function custom_post_type() {
-
-// Set UI labels for Custom Post Type
-    $labels = array(
-        'name'                => _x( 'Compliants', 'Post Type General Name', 'peterprinciple' ),
-        'singular_name'       => _x( 'Compliant', 'Post Type Singular Name', 'peterprinciple' ),
-        'menu_name'           => __( 'Compliants', 'peterprinciple' ),
-        'parent_item_colon'   => __( 'Parent Compliant', 'peterprinciple' ),
-        'all_items'           => __( 'All Compliants', 'peterprinciple' ),
-        'view_item'           => __( 'View Compliant', 'peterprinciple' ),
-        'add_new_item'        => __( 'Add New Compliant', 'peterprinciple' ),
-        'add_new'             => __( 'Add New', 'peterprinciple' ),
-        'edit_item'           => __( 'Edit Compliant', 'peterprinciple' ),
-        'update_item'         => __( 'Update Compliant', 'peterprinciple' ),
-        'search_items'        => __( 'Search Compliant', 'peterprinciple' ),
-        'not_found'           => __( 'Not Found', 'peterprinciple' ),
-        'not_found_in_trash'  => __( 'Not found in Trash', 'peterprinciple' ),
-    );
-
-// Set other options for Custom Post Type
-
-    $args = array(
-        'label'               => __( 'compliant', 'peterprinciple' ),
-        'description'         => __( 'Compliant news and reviews', 'peterprinciple' ),
-        'labels'              => $labels,
-        // Features this CPT supports in Post Editor
-        'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-        // You can associate this CPT with a taxonomy or custom taxonomy.
-        'taxonomies'          => array( 'genres' ),
-        /* A hierarchical CPT is like Pages and can have
-        * Parent and child items. A non-hierarchical CPT
-        * is like Posts.
-        */
-        'hierarchical'        => false,
-        'public'              => true,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
-        'show_in_nav_menus'   => true,
-        'show_in_admin_bar'   => true,
-        'menu_position'       => 2,
-        'can_export'          => true,
-        'has_archive'         => true,
-        'exclude_from_search' => false,
-        'publicly_queryable'  => true,
-        'capability_type'     => 'post',
-        'show_in_rest' => true,
-
-    );
-
-    // Registering your Custom Post Type
-    register_post_type( 'compliant', $args );
+	acf_add_options_page();
 
 }
 
-/* Hook into the 'init' action so that the function
-* Containing our post type registration is not
-* unnecessarily executed.
-*/
+    function revcon_change_post_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'Compliant';
+    $submenu['edit.php'][5][0] = 'Compliant';
+    $submenu['edit.php'][10][0] = 'Add Compliant';
+    $submenu['edit.php'][16][0] = 'Compliant Tags';
+}
+function revcon_change_post_object() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Compliant';
+    $labels->singular_name = 'Compliant';
+    $labels->add_new = 'Add Compliant';
+    $labels->add_new_item = 'Add Compliant';
+    $labels->edit_item = 'Edit Compliant';
+    $labels->new_item = 'Compliant';
+    $labels->view_item = 'View Compliant';
+    $labels->search_items = 'Search Compliant';
+    $labels->not_found = 'No Compliant found';
+    $labels->not_found_in_trash = 'No Compliant found in Trash';
+    $labels->all_items = 'All Compliant';
+    $labels->menu_name = 'Compliant';
+    $labels->name_admin_bar = 'Compliant';
+}
 
-add_action( 'init', 'custom_post_type', 0 );
+add_action( 'admin_menu', 'revcon_change_post_label' );
+add_action( 'init', 'revcon_change_post_object' );

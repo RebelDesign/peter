@@ -1,32 +1,34 @@
 <header>
-	<?php if ( has_nav_menu( 'utility' )) : ?>
 
-		<nav class="utility-desktop clearfix">
+<?php
+$header = new StdClass;
+$header->logo = get_field('header_logo', 'option')['url'];
 
-			<?php
-				wp_nav_menu( array(
-					'theme_location' 	=> 'utility',
-					'menu_class'     	=> 'utility-menu'
-				 ) );
-			?>
+ ?>
 
-		</nav>
 
-	<?php endif; ?>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <a class="navbar-brand col-3" href="/">
+		 <img src="<?php echo $header->logo ?>" alt="">
+	 </a>
+   <button class="navbar-toggler order-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-12 clearfix">
-				
-				<div class="branding">
+			 <?php
+			 wp_nav_menu( array(
+         'menu'              => "Main Menu",
+         'menu_class'        => "navbar-nav mr-auto",
+         'theme_location' => 'primary',
+         'container_class'   => "collapse navbar-collapse",
+         'container_id'      => "navbarSupportedContent",
+       ) );
 
-					<h1 class="title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			  ?>
+     <form class="form-inline my-2 my-lg-0">
+       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+     </form>
 
-				</div>
-
-				<?php Components\View::render( 'header', 'navigation' ); ?>
-
-			</div>
-		</div>
-	</div>
+ </nav>
 </header>
