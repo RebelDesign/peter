@@ -18,10 +18,10 @@ class Menus
     public static function register()
     {
         register_nav_menus( array(
-            'primary' => __( 'Primary Menu', 'components-theme' ),
-            'utility' => __( 'Utility Menu', 'components-theme' ),
-            'footer-menu' => __( 'Footer Menu', 'components-theme' ),
-            'footer-legal' => __( 'Footer Legal', 'components-theme' ),
+            'primary' => __( 'Primary Menu', 'peterprinciple' ),
+            'utility' => __( 'Utility Menu', 'peterprinciple' ),
+            'footer-menu' => __( 'Footer Menu', 'peterprinciple' ),
+            'footer-legal' => __( 'Footer Legal', 'peterprinciple' ),
         ) );
     }
 }

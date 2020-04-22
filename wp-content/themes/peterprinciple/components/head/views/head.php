@@ -7,6 +7,4 @@
 	<?php endif; ?>
 	<?php wp_head(); ?>
 
-	<?php wp_nav_menu(array('menu' => 'Main')); ?>
-
 </head>

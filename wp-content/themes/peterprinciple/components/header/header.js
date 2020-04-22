@@ -2,12 +2,7 @@
 
   $(document).ready(function(){
 
-      $('#mobile-menu').click(function(){
-          $(this).toggleClass('open');
 
-          $('.mobile-menu').fadeToggle();
-          $('.utility-menu').fadeToggle();
-      });
 
   });
 
@@ -23,17 +18,14 @@
 
   });
 
-  /**
-   * Optional Pinned Header
-   */
-  $(window).scroll(function (event) {
-      var scroll = $(window).scrollTop();
+   var prev = 0;
+   var $window = $(window);
+   var nav = $('.scrollhide-nav');
 
-      if(scroll > 84){
-          $('header').addClass('scroll');
-      } else {
-          $('header').removeClass('scroll');
-      }
+  $(window).scroll(function (event) {
+    var scrollTop = $window.scrollTop();
+    nav.toggleClass('hidden', scrollTop > prev);
+    prev = scrollTop;
   });
 
 })(jQuery);

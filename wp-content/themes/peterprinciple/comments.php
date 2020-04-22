@@ -7,7 +7,7 @@
  *
  * This template is taken essentially wholesale from the twentyseventeen wp template
  * @package WordPress
- * @subpackage components-theme
+ * @subpackage peterprinciple
  * @since Components Theme 0.1
  */
 
@@ -30,7 +30,7 @@ if ( post_password_required() ) {
 
 				if ( 1 === $comments_number ) {
 					/* translators: %s: post title */
-					printf( _x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'components-theme' ), get_the_title() );
+					printf( _x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'peterprinciple' ), get_the_title() );
 				} else {
 					printf(
 						/* translators: 1: number of comments, 2: post title */
@@ -39,7 +39,7 @@ if ( post_password_required() ) {
 							'%1$s thoughts on &ldquo;%2$s&rdquo;',
 							$comments_number,
 							'comments title',
-							'components-theme'
+							'peterprinciple'
 						),
 						number_format_i18n( $comments_number ),
 						get_the_title()
@@ -68,7 +68,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'components-theme' ); ?></p>
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'peterprinciple' ); ?></p>
 	<?php endif; ?>
 
 	<?php
