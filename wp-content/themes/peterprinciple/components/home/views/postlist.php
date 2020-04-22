@@ -1,15 +1,10 @@
-<?php
-/**
- * The component that handles the post loop.
- */
-?>
 <div class="container my-3 py-3">
   <div class="row border border-primary rounded p-3">
       <article <?php post_class(); ?> >
 
         <h1><?php the_title(); ?></h1>
         <div class="col-12 p-0">
-          <h6> Author: <?php echo get_field('complaint_author'); ?> </h6>
+          <h5> Author: <?php echo get_field('complaint_author'); ?> </h5>
           <p> <?php get_the_date(); ?>
         </div>
 
