@@ -23,7 +23,7 @@ Setup\Scripts::init();
 Setup\Menus::init();
 
 
-Setup\PostTypes\Compliants::register();
+// Setup\PostTypes\Compliants::register();
 Setup\Widgets\RelatedPosts::register();
 
 function get_the_content_formatted() {
@@ -40,8 +40,31 @@ if( function_exists('acf_add_options_page') ) {
 
 }
 
-
-function reg_cat() {
- register_taxonomy_for_object_type('category','compliants');
+    function revcon_change_post_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'Compliant';
+    $submenu['edit.php'][5][0] = 'Compliant';
+    $submenu['edit.php'][10][0] = 'Add Compliant';
+    $submenu['edit.php'][16][0] = 'Compliant Tags';
 }
-add_action('init', 'reg_cat');
+function revcon_change_post_object() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Compliant';
+    $labels->singular_name = 'Compliant';
+    $labels->add_new = 'Add Compliant';
+    $labels->add_new_item = 'Add Compliant';
+    $labels->edit_item = 'Edit Compliant';
+    $labels->new_item = 'Compliant';
+    $labels->view_item = 'View Compliant';
+    $labels->search_items = 'Search Compliant';
+    $labels->not_found = 'No Compliant found';
+    $labels->not_found_in_trash = 'No Compliant found in Trash';
+    $labels->all_items = 'All Compliant';
+    $labels->menu_name = 'Compliant';
+    $labels->name_admin_bar = 'Compliant';
+}
+
+add_action( 'admin_menu', 'revcon_change_post_label' );
+add_action( 'init', 'revcon_change_post_object' );

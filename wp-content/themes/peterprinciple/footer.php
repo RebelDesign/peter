@@ -1,8 +1,8 @@
-		<footer>
-		
+		<footer class='d-none'>
+
 			<?php Components\View::render('footer','nav'); ?>
 			<?php Components\View::render('footer','legal'); ?>
-		
+
 		</footer>
 
 		<?php wp_footer(); ?>

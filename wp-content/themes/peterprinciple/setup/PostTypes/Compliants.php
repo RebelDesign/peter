@@ -1,4 +1,4 @@
-<?php
+<!-- ?php
 namespace Setup\PostTypes;
 
 class Compliants
@@ -38,8 +38,9 @@ class Compliants
                 'capability_type' => 'post',
                 'taxonomies'  => array( 'category' ),
                 'hierarchical' => false,
+                'rewrite' => array('slug' => 'compliant'),
                 'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions')
             )
         );
     }
-}
+} -->
