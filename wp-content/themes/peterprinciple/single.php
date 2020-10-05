@@ -4,11 +4,10 @@
  */
 
 get_header();
-	
-	while ( have_posts() ) : the_post();
 
+	while ( have_posts() ) : the_post();
 		Components\View::render('post', 'container' );
 
 	endwhile;
-	
+
 get_footer(); ?>

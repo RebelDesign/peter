@@ -1,3 +1,4 @@
+<a href="<?php echo  get_post_permalink(); ?>">
 <div class="container my-3 py-3">
   <div class="row border border-primary rounded p-3">
       <article <?php post_class(); ?> >
@@ -23,3 +24,4 @@
       </article>
   </div>
 </div>
+</a>
