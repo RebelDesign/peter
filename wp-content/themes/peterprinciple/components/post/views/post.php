@@ -10,12 +10,16 @@
         <h1><?php the_title(); ?></h1>
         <div class="col-12 p-0">
           <h6> Author: <?php echo get_field('complaint_author'); ?> </h6>
+          <h6 class="d-flex"> Category: <?php the_category('|'); ?></h6>
           <p> <?php get_the_date(); ?>
         </div>
 
         <?php the_post_thumbnail(); ?>
 
         <?php the_content(); ?>
+
+        <a href="<?php echo  get_post_permalink(); ?>"> <?php get_comments_number(); ?> </a>
+
         <div class="row">
           <div class="col-6">
             <?php if(function_exists('the_ratings')) { the_ratings(); } ?>

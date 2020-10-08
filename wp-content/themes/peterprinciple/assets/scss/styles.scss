@@ -86,10 +86,11 @@
  */
 // Component styles are injected through gulp
 /* inject:scss */
+@import '../../components/woocommerce/woocommerce-standard-styles';
+/* endinject */
+
 @import '../../components/event/event';
 @import '../../components/footer/footer';
 @import '../../components/header/header';
 @import '../../components/home/home';
 @import '../../components/post/post';
-@import '../../components/woocommerce/woocommerce-standard-styles';
-/* endinject */
